@@ -19,71 +19,67 @@ function App() {
     5) Push to github, email to future employeer and see if he/she likes or not
   */
   const [particulars, setParticulars] = useState([]);
-  async function fetchData() {
-    try {
-      const response = await fetchParticulars;
-      setParticulars(response.data.data);
-    } catch (error) {
-      setParticulars([]);
-    }
-  }
 
-  async function addData(entry) {
-    try {
-      const response = await addParticular(entry);
-      setParticulars(response.data.data);
-      swal({
-        title: "Add Particular",
-        text: "You have added a particular successfully!",
-        icon: "success",
-      });
-    } catch (error) {
-      console.log(error);
+  const addData = (entry) => {
+    addParticular(entry).then(
+      (response) => {
+        setParticulars(response.data.data);
+        swal({
+          title: "Add Particular",
+          text: "You have added a particular successfully!",
+          icon: "success",
+        });
+      },
+    ).catch((error) => {
       swal({
         title: "Add Particular",
         text: "Unable to add a particular!",
         icon: "error",
       });
-    }
-  }
+    });
+  };
 
-  async function editData(entry) {
-    try {
-      const response = await editParticular(entry);
-      setParticulars(response.data.data);
-      swal({
-        title: "Edit Particular",
-        text: "You have edited a particular successfully!",
-        icon: "success",
-      });
-    } catch (error) {
+  const editData = (entry) => {
+    editParticular(entry).then(
+      (response) => {
+        setParticulars(response.data.data);
+        swal({
+          title: "Edit Particular",
+          text: "You have edited a particular successfully!",
+          icon: "success",
+        });
+      },
+    ).catch((error) => {
       swal({
         title: "Edit Particular",
         text: error.response.data.msg,
         icon: "error",
       });
-    }
-  }
-  async function deleteData(entry) {
-    try {
-      const response = await deleteParticular(entry);
-      setParticulars(response.data.data);
-      swal({
-        title: "Delete Particular",
-        text: "You have deleted a particular successfully!",
-        icon: "success",
-      });
-    } catch (error) {
+    });
+  };
+
+  const deleteData = (entry) => {
+    deleteParticular(entry).then(
+      (response) => {
+        setParticulars(response.data.data);
+        swal({
+          title: "Delete Particular",
+          text: "You have deleted a particular successfully!",
+          icon: "success",
+        });
+      },
+    ).catch((error) => {
       swal({
         title: "Delete Particular",
         text: "Unable to delete a particular!",
         icon: "error",
       });
-    }
-  }
+    });
+  };
 
   useEffect(() => {
-    fetchData();
+    fetchParticulars().then((response) => setParticulars(response.data.data))
+      .catch(setParticulars([]));
   }, []);
 
   return (
