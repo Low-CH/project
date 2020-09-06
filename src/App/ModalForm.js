@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
@@ -7,11 +7,18 @@ import Select from "../Components/Select";
 import "font-awesome/css/font-awesome.css";
 
 function ModalForm(props) {
-  const [firstName, setFirstName] = useState(props.firstName);
-  const [lastName, setLastName] = useState(props.lastName);
-  const [job, setJob] = useState(props.job);
-
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [job, setJob] = useState("");
   const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    const { firstName, lastName, job } = props;
+    setFirstName(firstName);
+    setLastName(lastName);
+    setJob(job);
+  }, [props]);
+
   const handleClose = () => {
     // reset back the default
     setFirstName(props.firstName);
@@ -68,6 +75,9 @@ function ModalForm(props) {
         <Button variant="info" onClick={handleShow}>
           <i className="fa fa-info-circle">&nbsp;Info</i>
         </Button>
+      );
+      SubmitButton = (
+        <button className="btn">&nbsp;</button>
       );
       disabled = true;
       break;
