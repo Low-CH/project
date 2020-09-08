@@ -1,14 +1,14 @@
 import React, { memo } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 
-function RadioButton({
+const RadioButton = ({
   label,
   name,
   values,
   register,
   selected = "",
   disabled = false,
-}) {
+}) => {
   const options = values.map((value) => (
     <option value={value} key={value}>
       {value}
@@ -28,6 +28,6 @@ function RadioButton({
       </select>
     </div>
   );
-}
+};
 
 export default memo(RadioButton);

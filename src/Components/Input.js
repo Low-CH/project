@@ -1,7 +1,8 @@
 import React, { memo } from "react";
+import { useCountRenders } from "../useCountRenders";
 import "bootstrap/dist/css/bootstrap.css";
 
-function Input({
+const Input = ({
   label,
   name,
   nameErrors = "",
@@ -10,7 +11,8 @@ function Input({
   minLength = 0,
   disabled = false,
   value = "",
-}) {
+}) => {
+  useCountRenders(name);
   return (
     <div className="form-group">
       <label>{label}:</label>
@@ -31,6 +33,6 @@ function Input({
       )}
     </div>
   );
-}
+};
 
 export default memo(Input);

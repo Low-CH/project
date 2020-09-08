@@ -1,17 +1,17 @@
 import React from "react";
-import { Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import ModalForm from "./ModalForm";
-import Delete from "../Components/Delete";
 
 import "bootstrap/dist/css/bootstrap.css";
 
 function ParticularsTable({ particulars, editData, deleteData }) {
-  const ParticularBody =
-    particulars === [] ? (
+  const ParticularBody = particulars === []
+    ? (
       <tr>
         <td colspan="3">No entry found</td>
       </tr>
-    ) : (
+    )
+    : (
       particulars.map((particular) => (
         <ParticularRow
           key={particular.id}
@@ -60,7 +60,9 @@ function ParticularRow({ particular, editData, deleteData }) {
           gender={gender}
           handleData={editData}
         />
-        <Delete onClick={() => deleteData(id)} />
+        <Button variant="danger" onClick={() => deleteData(id)}>
+          <i className="fa fa-trash">&nbsp;Delete</i>
+        </Button>
       </td>
     </tr>
   );

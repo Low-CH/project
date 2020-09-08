@@ -48,6 +48,26 @@ The table has multiple rows, each row has its own data entry, info, edit and del
 
 When users interacts with Add, Info or Edit button, spopups the modal for him/her to see the details(ModalForm.js). Initally the ModalForm is splitted into 3 modals to handle adding, viewing or editing the particular. Now it has been refracted and combined into a single javascript(ModalForm.js).By doing so, developers can reference and change it easily. In modalForm.js, it reuses inputs and select for form handling. These form handling are placed in Components folder and memoized for resusablitiy in future aspects.
 
+## Hooks
+
+1. Allows to use features without writing a class.
+2. Some features are useful in improving performance in terms of less re-rendering.
+3. It is easier to use hooks.
+
+Note: this project can still be improve and not alawys a silver bullet
+
+useEffect:
+
+1.  Avoid re-rendering data when component fetch data.
+2.  similar to props cycle, re-renders components upon receive props.
+
+useMemo: check changes, if have re-renders components
+
+useCallBack: prevent function from every single render. Without it it re-renders the component
+example , onChange replacing changeFirstName to (event) => setFirstName(event)
+
+useRef: counts how many times it re-renders the component
+
 ## Resource
 
 [Tutorial on react hooks](https://www.youtube.com/watch?v=9xhKH43llhU&list=PLN3n1USn4xlmyw3ebYuZmGp60mcENitdM)

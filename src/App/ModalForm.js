@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Modal } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
@@ -18,6 +18,18 @@ function ModalForm(props) {
     setLastName(lastName);
     setJob(job);
   }, [props]);
+
+  const changeFirstName = useCallback((event) => {
+    setFirstName(event.target.value);
+  }, [setFirstName]);
+
+  const changeLastName = useCallback((event) => {
+    setLastName(event.target.value);
+  }, [setLastName]);
+
+  const changeJob = useCallback((event) => {
+    setJob(event.target.value);
+  }, [setJob]);
 
   const handleClose = () => {
     // reset back the default
@@ -98,7 +110,7 @@ function ModalForm(props) {
                   register={register}
                   minLength={3}
                   value={firstName}
-                  onChange={(event) => setFirstName(event.target.value)}
+                  onChange={(changeFirstName)}
                   disabled={disabled}
                 />
               </div>
@@ -110,7 +122,7 @@ function ModalForm(props) {
                   register={register}
                   minLength={3}
                   value={lastName}
-                  onChange={(event) => setLastName(event.target.value)}
+                  onChange={changeLastName}
                   disabled={disabled}
                 />
               </div>
@@ -124,7 +136,7 @@ function ModalForm(props) {
                   register={register}
                   minLength={5}
                   value={job}
-                  onChange={(event) => setJob(event.target.value)}
+                  onChange={changeJob}
                   disabled={disabled}
                 />
               </div>
