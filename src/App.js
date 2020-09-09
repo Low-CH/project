@@ -89,7 +89,7 @@ function App() {
           <div className="col-md-2"></div>
           <div className="col-md-8">
             <h1>Personnel Particulars Management</h1>
-            <div className="d-flex flex-row-reverse">
+            <div className="d-flex flex-row-reverse pb-3">
               <ModalForm
                 id={0}
                 mode={"Add"}
