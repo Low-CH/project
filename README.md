@@ -68,6 +68,15 @@ example , onChange replacing changeFirstName to (event) => setFirstName(event)
 
 useRef: counts how many times it re-renders the component
 
+## File structures
+
+Most of the time we developers need to come out a file structure or wants to know the overview what components or functions use in other files easily.
+
+type `npx destiny ./src` shows the project dependency
+type `npx destiny ./src --write` rearrages the components into that given structure
+
 ## Resource
 
 [Tutorial on react hooks](https://www.youtube.com/watch?v=9xhKH43llhU&list=PLN3n1USn4xlmyw3ebYuZmGp60mcENitdM)
+
+[Prettier for file structures](https://www.youtube.com/watch?v=rGYbrIf-y58&ab_channel=BenAwad)
