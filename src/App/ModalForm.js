@@ -153,7 +153,9 @@ function ModalForm(props) {
                 />
               </div>
             </div>
-            {SubmitButton}
+            <div className="d-flex flex-row-reverse pb-3">
+              {SubmitButton}
+            </div>
           </form>
         </Modal.Body>
       </Modal>

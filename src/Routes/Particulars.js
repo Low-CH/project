@@ -7,7 +7,7 @@ Fetch all particulars
 Params required none
 */
 const fetchParticulars = async () => {
-  const response = await axios.get(`${url}`);
+  const response = await axios.get(url);
   return response;
 };
 /*
@@ -16,7 +16,7 @@ Add a particular
 
 const addParticular = async ({ firstName, lastName, job, gender }) => {
   const response = await axios.post(
-    `${url}`,
+    url,
     { firstName, lastName, job, gender },
   );
   return response;
